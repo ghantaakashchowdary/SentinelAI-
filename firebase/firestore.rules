@@ -1,0 +1,22 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Prediction history collection
+    match /predictions/{predictionId} {
+      // Allow read access to authenticated users (or anyone in demo mode)
+      allow read: if request.auth != null || resource.data.isPublic == true;
+      
+      // Writes are strictly performed through Firebase Cloud Functions (Admin SDK)
+      // Direct client writes are rejected to ensure integrity
+      allow write: if false;
+    }
+    
+    // System metadata and status collection
+    match /system/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
