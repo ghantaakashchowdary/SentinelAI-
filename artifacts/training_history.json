@@ -1,0 +1,83 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.7037130540876246,
+      "validation_loss": 3.910799503326416,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.096950651994392,
+      "validation_loss": 4.324488639831543,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.7601176660452316,
+      "validation_loss": 4.569506645202637,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.4907798980599019,
+      "validation_loss": 4.916428565979004,
+      "learning_rate": 0.001
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.3299067109378415,
+      "validation_loss": 5.05042028427124,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.2243549788176125,
+      "validation_loss": 5.166519641876221,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.1564636506251436,
+      "validation_loss": 5.184137344360352,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.060903995784361,
+      "validation_loss": 5.196977615356445,
+      "learning_rate": 0.0005
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.0215485647543152,
+      "validation_loss": 5.272756099700928,
+      "learning_rate": 0.00025
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.9711646028419039,
+      "validation_loss": 5.26261043548584,
+      "learning_rate": 0.00025
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.9590106980124516,
+      "validation_loss": 5.246770858764648,
+      "learning_rate": 0.00025
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.9358442221114884,
+      "validation_loss": 5.269482135772705,
+      "learning_rate": 0.00025
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.9118171761285013,
+      "validation_loss": 5.305391311645508,
+      "learning_rate": 0.000125
+    }
+  ],
+  "best_validation_loss": 3.910799503326416
+}

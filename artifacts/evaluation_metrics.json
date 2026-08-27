@@ -1,0 +1,100 @@
+{
+  "model_version": "m3-lstm-1.0.0",
+  "test_windows": 21,
+  "test_sequences": 15,
+  "forecast_horizon": 2,
+  "attack_by_step": {
+    "T+1": {
+      "precision": 0.5714285714285714,
+      "recall": 1.0,
+      "f1": 0.7272727272727273,
+      "false_positive_rate": 0.2727272727272727,
+      "confusion_matrix": [
+        [
+          8,
+          3
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "brier_score": 0.17137666046619415,
+      "roc_auc": 0.8409090909090908,
+      "pr_auc": 0.5666666666666667
+    },
+    "T+2": {
+      "precision": 0.375,
+      "recall": 1.0,
+      "f1": 0.5454545454545454,
+      "false_positive_rate": 0.4166666666666667,
+      "confusion_matrix": [
+        [
+          7,
+          5
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "brier_score": 0.22607997059822083,
+      "roc_auc": 0.888888888888889,
+      "pr_auc": 0.7
+    }
+  },
+  "state_forecast_by_step": {
+    "T+1": {
+      "mae": 225044.796875,
+      "rmse": 1103392.1331747838,
+      "normalized": {
+        "mae": 1.1533565521240234,
+        "rmse": 1.6990208302254322
+      }
+    },
+    "T+2": {
+      "mae": 155438.3125,
+      "rmse": 1043132.0242883927,
+      "normalized": {
+        "mae": 0.9621170163154602,
+        "rmse": 1.4886334020147043
+      }
+    }
+  },
+  "stage_by_step": {
+    "T+1": {
+      "macro_f1": 0.03333333333333333,
+      "accuracy": 0.06666666666666667,
+      "classes_observed_in_test": [
+        "Exfiltration",
+        "Normal"
+      ],
+      "classes_unseen_in_training": [
+        "Exfiltration"
+      ],
+      "stage_prediction_is_masked_to_training_supported_classes": true
+    },
+    "T+2": {
+      "macro_f1": 0.18421052631578946,
+      "accuracy": 0.4666666666666667,
+      "classes_observed_in_test": [
+        "Exfiltration",
+        "Normal"
+      ],
+      "classes_unseen_in_training": [
+        "Exfiltration"
+      ],
+      "stage_prediction_is_masked_to_training_supported_classes": true
+    }
+  },
+  "overall": {
+    "attack_precision": 0.4732142857142857,
+    "attack_recall": 1.0,
+    "attack_f1": 0.6363636363636364,
+    "attack_false_positive_rate": 0.3446969696969697,
+    "state_mae": 190241.5546875,
+    "state_rmse": 1073262.0787315883,
+    "normalized_state_mae": 1.0577367842197418,
+    "normalized_state_rmse": 1.5938271161200683
+  }
+}

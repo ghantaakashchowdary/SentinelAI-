@@ -1,0 +1,75 @@
+{
+  "rows": 105,
+  "features": [
+    "total_packets",
+    "total_bytes",
+    "duration",
+    "syn_flag_count",
+    "ack_flag_count",
+    "fin_flag_count",
+    "rst_flag_count",
+    "psh_flag_count",
+    "ttl",
+    "tcp_window_size",
+    "fragmented",
+    "retransmission_count",
+    "flow_bytes_per_sec",
+    "flow_packets_per_sec",
+    "avg_packet_size",
+    "flow_count",
+    "unique_src_ips",
+    "unique_dst_ips",
+    "unique_dst_ports",
+    "tcp_count",
+    "udp_count"
+  ],
+  "feature_count": 21,
+  "stages": [
+    "Command and Control",
+    "Denial of Service",
+    "Exfiltration",
+    "Initial Access",
+    "Lateral Movement",
+    "Normal",
+    "Reconnaissance"
+  ],
+  "labels": [
+    "BENIGN",
+    "Botnet",
+    "DDoS",
+    "DoS Hulk",
+    "FTP-Patator",
+    "Infiltration",
+    "PortScan",
+    "SSH-Patator"
+  ],
+  "missing_values": 0,
+  "start": "2026-08-27T09:00:00",
+  "end": "2026-08-27T09:08:40",
+  "window_seconds": 5.0,
+  "gap_count": 0,
+  "stage_counts": {
+    "Normal": 42,
+    "Initial Access": 18,
+    "Reconnaissance": 12,
+    "Denial of Service": 10,
+    "Lateral Movement": 8,
+    "Command and Control": 8,
+    "Exfiltration": 7
+  },
+  "label_counts": {
+    "BENIGN": 42,
+    "PortScan": 12,
+    "DoS Hulk": 10,
+    "FTP-Patator": 9,
+    "SSH-Patator": 9,
+    "Infiltration": 8,
+    "Botnet": 8,
+    "DDoS": 7
+  },
+  "feature_leakage_excluded": [
+    "majority_attack_stage",
+    "majority_label",
+    "stage_purity"
+  ]
+}
