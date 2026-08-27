@@ -266,3 +266,46 @@ Tests cover:
 ## No FastAPI / frontend ownership
 
 Module 3 provides the Python model and inference contract. FastAPI remains Module 4's responsibility. The included Streamlit dashboard is only a local Module 3 engineering/demo surface for exercising the actual model.
+
+MODULE 2
+                    │
+                    │
+                    ▼
+        network_state_sequence.csv
+                    │
+                    ▼
+          ┌─────────────────────┐
+          │ Contract Validation │
+          └──────────┬──────────┘
+                     │
+                     ▼
+        Chronological Train/Val/Test
+                     │
+                     ▼
+          Training-only StandardScaler
+                     │
+                     ▼
+            Temporal Sequences
+              5 history windows
+                     │
+                     ▼
+             ┌─────────────┐
+             │    LSTM     │
+             │ World Model │
+             └──────┬──────┘
+                    │
+        ┌───────────┼────────────┐
+        │           │            │
+        ▼           ▼            ▼
+ Future State   Attack Risk   Attack Stage
+ Forecast       Probability   Prediction
+        │           │            │
+        └───────────┼────────────┘
+                    ▼
+             Evaluation
+                    │
+                    ▼
+              Model Artifacts
+                    │
+                    ▼
+             Module 4 Inference
