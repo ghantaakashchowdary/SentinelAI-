@@ -1,0 +1,69 @@
+{
+  "model_version": "m3-lstm-1.0.0",
+  "feature_schema_version": "module2-network-state-v1",
+  "attack_probability": 0.3175641894340515,
+  "predicted_stage": "Normal",
+  "forecast_horizon": 2,
+  "future_predictions": [
+    {
+      "step": 1,
+      "time_window": "2026-08-27T09:08:45",
+      "attack_probability": 0.3175641894340515,
+      "predicted_stage": "Normal",
+      "stage_confidence": 0.19762158393859863,
+      "predicted_state": {
+        "total_packets": 1355.23046875,
+        "total_bytes": 814033.75,
+        "duration": 0.9669888019561768,
+        "syn_flag_count": 45.174739837646484,
+        "ack_flag_count": 0.0,
+        "fin_flag_count": 11.584822654724121,
+        "rst_flag_count": 4.766500473022461,
+        "psh_flag_count": 0.0,
+        "ttl": 109.5886001586914,
+        "tcp_window_size": 37365.01171875,
+        "fragmented": 1.871078372001648,
+        "retransmission_count": 29.136756896972656,
+        "flow_bytes_per_sec": 1002134.5,
+        "flow_packets_per_sec": 2134.251708984375,
+        "avg_packet_size": 217.3316650390625,
+        "flow_count": 28.687103271484375,
+        "unique_src_ips": 33.02882385253906,
+        "unique_dst_ips": 33.73743438720703,
+        "unique_dst_ports": 16.434606552124023,
+        "tcp_count": 28.020423889160156,
+        "udp_count": 1.6931419372558594
+      }
+    },
+    {
+      "step": 2,
+      "time_window": "2026-08-27T09:08:50",
+      "attack_probability": 0.37599918246269226,
+      "predicted_stage": "Normal",
+      "stage_confidence": 0.3358851671218872,
+      "predicted_state": {
+        "total_packets": 1327.209716796875,
+        "total_bytes": 144327.625,
+        "duration": 0.6867426633834839,
+        "syn_flag_count": 24.89499855041504,
+        "ack_flag_count": 188.09732055664062,
+        "fin_flag_count": 7.037586688995361,
+        "rst_flag_count": 0.0,
+        "psh_flag_count": 280.415283203125,
+        "ttl": 95.65505981445312,
+        "tcp_window_size": 33969.16015625,
+        "fragmented": 0.26273345947265625,
+        "retransmission_count": 51.87250900268555,
+        "flow_bytes_per_sec": 776063.1875,
+        "flow_packets_per_sec": 293.41925048828125,
+        "avg_packet_size": 353.01123046875,
+        "flow_count": 48.24357604980469,
+        "unique_src_ips": 26.82456398010254,
+        "unique_dst_ips": 23.679895401000977,
+        "unique_dst_ports": 6.91841983795166,
+        "tcp_count": 57.46665573120117,
+        "udp_count": 7.474310874938965
+      }
+    }
+  ]
+}

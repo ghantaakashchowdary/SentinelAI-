@@ -1,0 +1,37 @@
+{
+  "stage_names": [
+    "Command and Control",
+    "Denial of Service",
+    "Exfiltration",
+    "Initial Access",
+    "Lateral Movement",
+    "Normal",
+    "Reconnaissance"
+  ],
+  "stage_to_id": {
+    "Command and Control": 0,
+    "Denial of Service": 1,
+    "Exfiltration": 2,
+    "Initial Access": 3,
+    "Lateral Movement": 4,
+    "Normal": 5,
+    "Reconnaissance": 6
+  },
+  "label_names": [
+    "BENIGN",
+    "Botnet",
+    "DDoS",
+    "DoS Hulk",
+    "FTP-Patator",
+    "Infiltration",
+    "PortScan",
+    "SSH-Patator"
+  ],
+  "train_supported_stage_names": [
+    "Denial of Service",
+    "Initial Access",
+    "Lateral Movement",
+    "Normal",
+    "Reconnaissance"
+  ]
+}

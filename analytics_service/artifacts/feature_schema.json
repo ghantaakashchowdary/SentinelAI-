@@ -1,0 +1,30 @@
+{
+  "feature_columns": [
+    "total_packets",
+    "total_bytes",
+    "duration",
+    "syn_flag_count",
+    "ack_flag_count",
+    "fin_flag_count",
+    "rst_flag_count",
+    "psh_flag_count",
+    "ttl",
+    "tcp_window_size",
+    "fragmented",
+    "retransmission_count",
+    "flow_bytes_per_sec",
+    "flow_packets_per_sec",
+    "avg_packet_size",
+    "flow_count",
+    "unique_src_ips",
+    "unique_dst_ips",
+    "unique_dst_ports",
+    "tcp_count",
+    "udp_count"
+  ],
+  "excluded_columns": [
+    "majority_label",
+    "majority_attack_stage",
+    "stage_purity"
+  ]
+}
