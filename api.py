@@ -330,7 +330,7 @@ def health_check():
     )
 
 
-@app.post("/predict", response_model=PredictResponse)
+@app.post("/predict")
 def predict(request_data: PredictRequest):
     """
     Run multi-stage attack forecasting inference.
@@ -434,10 +434,12 @@ def predict(request_data: PredictRequest):
                     detail="Timestamps must be non-empty strings (e.g. ISO-8601 format).",
                 )
 
-    # 6. Convert to DataFrame and call Madhav's existing Forecaster.predict()
+    # 6. Convert to DataFrame and call SecurityInterpreter
     try:
+        from src.analytics.interpreter import SecurityInterpreter
+        interpreter = SecurityInterpreter(model_manager.artifact_dir)
         input_df = pd.DataFrame(matrix, columns=feature_cols)
-        prediction_result = forecaster.predict(input_df, timestamps)
+        prediction_result = interpreter.analyze_sequence(input_df, timestamps)
         return prediction_result
     except ValueError as ve:
         logger.warning("Forecaster input error: %s", ve)
@@ -453,7 +455,7 @@ def predict(request_data: PredictRequest):
         )
 
 
-@app.post("/predict/raw-flows", response_model=PredictResponse)
+@app.post("/predict/raw-flows")
 def predict_raw_flows(request_data: RawFlowsRequest):
     """
     Run multi-stage attack forecasting starting from RAW network flows.
@@ -524,9 +526,11 @@ def predict_raw_flows(request_data: RawFlowsRequest):
             detail=f"Failed to process raw network flows: {str(e)}",
         )
 
-    # 6. Run Madhav Forecaster inference
+    # 6. Run SecurityInterpreter
     try:
-        prediction_result = forecaster.predict(sequence_df, timestamps)
+        from src.analytics.interpreter import SecurityInterpreter
+        interpreter = SecurityInterpreter(model_manager.artifact_dir)
+        prediction_result = interpreter.analyze_sequence(sequence_df, timestamps)
         return prediction_result
     except ValueError as ve:
         logger.warning("Forecaster input error: %s", ve)

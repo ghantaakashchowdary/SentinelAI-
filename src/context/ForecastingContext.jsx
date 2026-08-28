@@ -65,6 +65,42 @@ export function ForecastingProvider({ children }) {
     setNotifications(prev => [newNotif, ...prev.slice(0, 7)]);
   };
 
+  const runLiveAnalytics = async (networkWindowsArray) => {
+    try {
+      addNotification('Running Live ML', 'Sending traffic to Madhav/Raja API...', 'info');
+      const response = await fetch('http://localhost:8000/predict', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sequence: networkWindowsArray })
+      });
+      const data = await response.json();
+      
+      // Update the current scenario with live data
+      const liveScenario = {
+        ...currentScenario,
+        title: 'LIVE ML PREDICTION',
+        predictedAttack: data.forecast?.progression?.[0]?.predicted_stage || 'Unknown',
+        confidence: (data.forecast?.overall_attack_probability * 100).toFixed(1),
+        severity: data.forecast?.overall_attack_probability > 0.5 ? 'CRITICAL' : 'SAFE',
+        explainability: {
+          ...currentScenario.explainability,
+          topShapFeatures: data.explainability?.top_contributing_features?.map(f => ({
+            feature: f.feature,
+            importance: f.importance_score,
+            impact: f.importance_score > 0 ? 'positive' : 'negative',
+            description: f.interpretation
+          })) || []
+        }
+      };
+      
+      setCurrentScenario(liveScenario);
+      addNotification('Live ML Complete', `Prediction: ${liveScenario.predictedAttack}`, liveScenario.severity.toLowerCase());
+    } catch (err) {
+      addNotification('API Error', 'Could not reach backend API', 'critical');
+      console.error(err);
+    }
+  };
+
   const dismissNotification = (id) => {
     setNotifications(prev => prev.filter(n => n.id !== id));
   };
@@ -110,7 +146,8 @@ export function ForecastingProvider({ children }) {
         mitigationsApplied,
         applyMitigation,
         isTechMode,
-        setIsTechMode
+        setIsTechMode,
+        runLiveAnalytics
       }}
     >
       {children}

@@ -34,7 +34,8 @@ export default function DashboardPage() {
     setIsExportModalOpen,
     liveTick,
     isTechMode,
-    setIsTechMode
+    setIsTechMode,
+    runLiveAnalytics
   } = useForecasting();
 
   const [hoveredSection, setHoveredSection] = useState(null);
@@ -74,24 +75,43 @@ export default function DashboardPage() {
               </div>
 
               {/* Interactive Simple / Technical Language Switcher */}
-              <button
-                onClick={() => setIsTechMode(!isTechMode)}
-                className="flex items-center gap-1.5 rounded-full bg-slate-950/80 px-3 py-1 border border-slate-700 hover:border-cyan-400 text-xs font-mono text-slate-300 transition-all shadow-sm"
-                title="Toggle between Simple Language (Default) and Technical Details"
-              >
-                {isTechMode ? (
-                  <>
-                    <ToggleRight className="h-4 w-4 text-cyan-400" />
-                    <span className="text-cyan-300 font-bold">Technical View</span>
-                  </>
-                ) : (
-                  <>
-                    <ToggleLeft className="h-4 w-4 text-emerald-400" />
-                    <span className="text-emerald-300 font-semibold">🧑‍💼 Simple Language</span>
-                  </>
-                )}
-                <span className="text-[10px] text-slate-500 ml-1 hidden sm:inline">(Hover cards for tech info)</span>
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    const sampleWindows = [
+                      [100.0, 5000.0, 5.0, 10.0, 12.0, 0.0, 0.0, 5.0, 64.0, 65535.0, 0.0, 0.0, 1000.0, 20.0, 50.0, 15.0, 3.0, 4.0, 2.0, 15.0, 0.0],
+                      [110.0, 5200.0, 5.0, 12.0, 14.0, 0.0, 0.0, 6.0, 64.0, 65535.0, 0.0, 0.0, 1040.0, 22.0, 47.0, 16.0, 3.0, 4.0, 2.0, 16.0, 0.0],
+                      [120.0, 5400.0, 5.0, 15.0, 16.0, 0.0, 0.0, 7.0, 64.0, 65535.0, 0.0, 0.0, 1080.0, 24.0, 45.0, 17.0, 4.0, 5.0, 3.0, 17.0, 0.0],
+                      [130.0, 5600.0, 5.0, 18.0, 18.0, 0.0, 0.0, 8.0, 64.0, 65535.0, 0.0, 0.0, 1120.0, 26.0, 43.0, 18.0, 4.0, 5.0, 3.0, 18.0, 0.0],
+                      [140.0, 5800.0, 5.0, 20.0, 20.0, 0.0, 0.0, 9.0, 64.0, 65535.0, 0.0, 0.0, 1160.0, 28.0, 41.0, 19.0, 5.0, 6.0, 4.0, 19.0, 0.0]
+                    ];
+                    runLiveAnalytics(sampleWindows);
+                  }}
+                  className="flex items-center gap-1.5 rounded-full bg-indigo-950/80 px-3 py-1 border border-indigo-700 hover:border-indigo-400 text-xs font-mono text-indigo-300 transition-all shadow-sm"
+                >
+                  <Sparkles className="h-4 w-4 text-indigo-400" />
+                  <span className="text-indigo-300 font-bold">Run Live AI</span>
+                </button>
+                
+                <button
+                  onClick={() => setIsTechMode(!isTechMode)}
+                  className="flex items-center gap-1.5 rounded-full bg-slate-950/80 px-3 py-1 border border-slate-700 hover:border-cyan-400 text-xs font-mono text-slate-300 transition-all shadow-sm"
+                  title="Toggle between Simple Language (Default) and Technical Details"
+                >
+                  {isTechMode ? (
+                    <>
+                      <ToggleRight className="h-4 w-4 text-cyan-400" />
+                      <span className="text-cyan-300 font-bold">Technical View</span>
+                    </>
+                  ) : (
+                    <>
+                      <ToggleLeft className="h-4 w-4 text-emerald-400" />
+                      <span className="text-emerald-300 font-semibold">🧑‍💼 Simple Language</span>
+                    </>
+                  )}
+                  <span className="text-[10px] text-slate-500 ml-1 hidden sm:inline">(Hover cards for tech info)</span>
+                </button>
+              </div>
             </div>
 
             {/* Attack Title */}
