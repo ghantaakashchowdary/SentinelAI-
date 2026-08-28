@@ -16,6 +16,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics_service'))
 from src.forecasting.inference import Forecaster
 
 logging.basicConfig(
