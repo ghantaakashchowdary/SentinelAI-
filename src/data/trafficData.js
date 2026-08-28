@@ -1,0 +1,241 @@
+/**
+ * Network Traffic Data Models & Sample Flows for CIC-IDS2017 / NetFlow Ingestion
+ */
+
+export const PROTOCOL_DISTRIBUTION = [
+  { name: 'TCP', percentage: 68.4, bytes: '14.2 GB', flows: '412,890', color: '#06b6d4' },
+  { name: 'UDP', percentage: 21.2, bytes: '4.8 GB', flows: '128,400', color: '#3b82f6' },
+  { name: 'HTTPS/TLS', percentage: 62.1, bytes: '12.9 GB', flows: '380,100', color: '#10b981' },
+  { name: 'DNS', percentage: 5.4, bytes: '420 MB', flows: '94,200', color: '#f59e0b' },
+  { name: 'ICMP', percentage: 2.8, bytes: '180 MB', flows: '42,100', color: '#ef4444' },
+  { name: 'HTTP', percentage: 1.8, bytes: '95 MB', flows: '18,500', color: '#f97316' },
+  { name: 'SSH', percentage: 0.4, bytes: '42 MB', flows: '4,120', color: '#8b5cf6' }
+];
+
+export const TOP_TALKERS = [
+  {
+    ip: '185.220.101.5',
+    geo: 'Germany 🇩🇪',
+    asn: 'AS208323 (Zwiebelfreunde)',
+    packets: '2,450,120',
+    bytes: '3.42 GB',
+    reputation: 'Critical',
+    threatCategory: 'Tor Exit Node / DDoS Bot',
+    activeFlows: 1420,
+    flagged: true
+  },
+  {
+    ip: '194.26.29.112',
+    geo: 'Russia 🇷🇺',
+    asn: 'AS44034 (Hi-Speed Networks)',
+    packets: '1,890,400',
+    bytes: '2.81 GB',
+    reputation: 'Critical',
+    threatCategory: 'Bulletproof Hosting Scanner',
+    activeFlows: 980,
+    flagged: true
+  },
+  {
+    ip: '45.154.255.89',
+    geo: 'Bulgaria 🇧🇬',
+    asn: 'AS200052 (PQ Hosting)',
+    packets: '1,120,800',
+    bytes: '1.65 GB',
+    reputation: 'Elevated',
+    threatCategory: 'SYN Flood Worker',
+    activeFlows: 740,
+    flagged: true
+  },
+  {
+    ip: '10.0.1.1',
+    geo: 'Internal Gateway 🛡️',
+    asn: 'AS-PRIVATE (Internal Core)',
+    packets: '5,840,200',
+    bytes: '8.12 GB',
+    reputation: 'Safe',
+    threatCategory: 'Core Ingress Load Balancer',
+    activeFlows: 4120,
+    flagged: false
+  },
+  {
+    ip: '172.16.5.88',
+    geo: 'Internal Financial DB 🏦',
+    asn: 'AS-PRIVATE (PCI Subnet)',
+    packets: '890,300',
+    bytes: '1.45 GB',
+    reputation: 'Warning',
+    threatCategory: 'High Outbound Egress Rate',
+    activeFlows: 340,
+    flagged: true
+  },
+  {
+    ip: '142.250.190.46',
+    geo: 'United States 🇺🇸',
+    asn: 'AS15169 (Google LLC)',
+    packets: '620,100',
+    bytes: '940 MB',
+    reputation: 'Safe',
+    threatCategory: 'Cloud CDN & API Sync',
+    activeFlows: 210,
+    flagged: false
+  }
+];
+
+export const SAMPLE_FLOW_RECORDS = [
+  {
+    id: 'FL-90281',
+    timestamp: '14:58:22.104',
+    srcIp: '185.220.101.5',
+    srcPort: 49182,
+    dstIp: '10.0.1.1',
+    dstPort: 443,
+    protocol: 'TCP',
+    flowDuration: '0.002s',
+    totFwdPkts: 142,
+    totBwdPkts: 0,
+    synFlags: 142,
+    ackFlags: 0,
+    bytesSec: '2,410,000',
+    anomalyScore: 0.98,
+    severity: 'Critical',
+    threatTag: 'SYN Flood Probe'
+  },
+  {
+    id: 'FL-90282',
+    timestamp: '14:58:22.218',
+    srcIp: '194.26.29.112',
+    srcPort: 52410,
+    dstIp: '10.0.1.1',
+    dstPort: 443,
+    protocol: 'TCP',
+    flowDuration: '0.001s',
+    totFwdPkts: 98,
+    totBwdPkts: 0,
+    synFlags: 98,
+    ackFlags: 0,
+    bytesSec: '1,890,000',
+    anomalyScore: 0.95,
+    severity: 'Critical',
+    threatTag: 'SYN Flood Probe'
+  },
+  {
+    id: 'FL-90283',
+    timestamp: '14:58:22.340',
+    srcIp: '45.154.255.89',
+    srcPort: 60124,
+    dstIp: '10.0.1.1',
+    dstPort: 80,
+    protocol: 'TCP',
+    flowDuration: '0.003s',
+    totFwdPkts: 76,
+    totBwdPkts: 0,
+    synFlags: 76,
+    ackFlags: 0,
+    bytesSec: '1,120,000',
+    anomalyScore: 0.91,
+    severity: 'Critical',
+    threatTag: 'SYN Flood Probe'
+  },
+  {
+    id: 'FL-90284',
+    timestamp: '14:58:22.402',
+    srcIp: '172.16.5.88',
+    srcPort: 58921,
+    dstIp: '91.240.118.172',
+    dstPort: 443,
+    protocol: 'TCP',
+    flowDuration: '45.021s',
+    totFwdPkts: 840,
+    totBwdPkts: 620,
+    synFlags: 1,
+    ackFlags: 1,
+    bytesSec: '8,450,000',
+    anomalyScore: 0.89,
+    severity: 'Critical',
+    threatTag: 'TLS C2 Outbound Egress'
+  },
+  {
+    id: 'FL-90285',
+    timestamp: '14:58:22.519',
+    srcIp: '103.114.160.22',
+    srcPort: 34102,
+    dstIp: '10.0.2.15',
+    dstPort: 80,
+    protocol: 'HTTP',
+    flowDuration: '184.20s',
+    totFwdPkts: 18,
+    totBwdPkts: 0,
+    synFlags: 1,
+    ackFlags: 1,
+    bytesSec: '120',
+    anomalyScore: 0.79,
+    severity: 'Elevated',
+    threatTag: 'Slowloris Partial Header'
+  },
+  {
+    id: 'FL-90286',
+    timestamp: '14:58:22.610',
+    srcIp: '45.33.32.156',
+    srcPort: 41209,
+    dstIp: '192.168.10.45',
+    dstPort: 9200,
+    protocol: 'TCP',
+    flowDuration: '0.008s',
+    totFwdPkts: 4,
+    totBwdPkts: 2,
+    synFlags: 2,
+    ackFlags: 1,
+    bytesSec: '4,200',
+    anomalyScore: 0.62,
+    severity: 'Warning',
+    threatTag: 'Port Scan Probe'
+  },
+  {
+    id: 'FL-90287',
+    timestamp: '14:58:22.750',
+    srcIp: '10.0.1.100',
+    srcPort: 51240,
+    dstIp: '142.250.190.46',
+    dstPort: 443,
+    protocol: 'HTTPS',
+    flowDuration: '1.420s',
+    totFwdPkts: 24,
+    totBwdPkts: 32,
+    synFlags: 1,
+    ackFlags: 1,
+    bytesSec: '45,200',
+    anomalyScore: 0.08,
+    severity: 'Safe',
+    threatTag: 'Benign HTTPS Handshake'
+  },
+  {
+    id: 'FL-90288',
+    timestamp: '14:58:22.890',
+    srcIp: '10.0.1.102',
+    srcPort: 53110,
+    dstIp: '8.8.8.8',
+    dstPort: 53,
+    protocol: 'UDP',
+    flowDuration: '0.012s',
+    totFwdPkts: 2,
+    totBwdPkts: 2,
+    synFlags: 0,
+    ackFlags: 0,
+    bytesSec: '1,200',
+    anomalyScore: 0.04,
+    severity: 'Safe',
+    threatTag: 'Benign DNS Lookup'
+  }
+];
+
+export const FLOW_VOLUME_TIMELINE = [
+  { time: '14:50', normalPps: 14000, anomalyPps: 200, bandwidthGbps: 0.35 },
+  { time: '14:51', normalPps: 14200, anomalyPps: 220, bandwidthGbps: 0.36 },
+  { time: '14:52', normalPps: 13900, anomalyPps: 450, bandwidthGbps: 0.38 },
+  { time: '14:53', normalPps: 14500, anomalyPps: 1200, bandwidthGbps: 0.44 },
+  { time: '14:54', normalPps: 14100, anomalyPps: 4800, bandwidthGbps: 0.65 },
+  { time: '14:55', normalPps: 14600, anomalyPps: 18400, bandwidthGbps: 1.12 },
+  { time: '14:56', normalPps: 14300, anomalyPps: 64200, bandwidthGbps: 2.45 },
+  { time: '14:57', normalPps: 14000, anomalyPps: 189000, bandwidthGbps: 3.82 },
+  { time: '14:58 (Now)', normalPps: 14400, anomalyPps: 398000, bandwidthGbps: 4.62 }
+];
