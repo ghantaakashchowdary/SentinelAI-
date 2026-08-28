@@ -1,11 +1,19 @@
 import * as functions from "firebase-functions";
 import * as admin from "firebase-admin";
+import { getFirestore, FieldValue } from "firebase-admin/firestore";
 import axios, { AxiosError } from "axios";
 import cors from "cors";
 
+// Ensure local Firestore emulator is used if running locally
+if (!process.env.FIRESTORE_EMULATOR_HOST) {
+  process.env.FIRESTORE_EMULATOR_HOST = "127.0.0.1:8080";
+}
+
 // Initialize Firebase Admin SDK
 admin.initializeApp();
-const db = admin.firestore();
+const db = getFirestore();
+
+
 
 // CORS middleware handler
 const corsHandler = cors({ origin: true });
@@ -252,8 +260,9 @@ async function savePredictionToFirestore(
 ): Promise<string> {
   try {
     const docData: PredictionDocument = {
-      timestamp: admin.firestore.FieldValue.serverTimestamp(),
+      timestamp: FieldValue.serverTimestamp(),
       model_version: prediction.model_version,
+
       feature_schema_version: prediction.feature_schema_version,
       attack_probability: prediction.attack_probability,
       predicted_stage: prediction.predicted_stage,

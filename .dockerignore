@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.git/
+.gitignore
+firebase/
+firebase-debug.log
+firestore-debug.log
+data/
+tests/
+walkthrough.md
+implementation_plan.md
